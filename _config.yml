@@ -10,7 +10,11 @@ name: Peter Li
 
 
 # 描述/签名
-description: Microsoft Certified Developer
+description: 
+- Microsoft Certified Developer
+- Datacom Architect
+- 11 years software engineering
+
 
 #
 # 下面的设定都是可选的
