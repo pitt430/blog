@@ -32,7 +32,12 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 2em;
   margin: 1em 0 16px;
   padding: 0;
@@ -42,7 +47,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1, h2, h3, h5 {
+h1,
+h2,
+h3,
+h5 {
   font-weight: bold;
 }
 
@@ -85,16 +93,19 @@ a {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     color: $link-lighten-color;
   }
 }
 
-em, i {
+em,
+i {
   font-style: italic;
 }
 
-strong, b {
+strong,
+b {
   font-weight: bold;
 }
 
@@ -117,7 +128,8 @@ hr {
 // Yeun's list style
 // https://gist.github.com/yeun/d824fc7b04b756508f4b0143535cec30
 
-ol, ul {
+ol,
+ul {
   > li {
     &:before {
       position: absolute;
@@ -153,7 +165,8 @@ ol {
   }
 }
 
-ol, ul {
+ol,
+ul {
   > li {
     margin: 0 auto $li-bottom-space $li-bullets-width;
     line-height: $li-line-height;
@@ -170,7 +183,8 @@ li {
   > ul {
     > li {
       font-size: ($li-child-size-ratio * 1em);
-      margin: 0 auto ($li-bottom-space * $li-child-size-ratio) ($li-bullets-width * $li-child-size-ratio);
+      margin: 0 auto ($li-bottom-space * $li-child-size-ratio)
+        ($li-bullets-width * $li-child-size-ratio);
     }
   }
 }
@@ -209,8 +223,9 @@ table {
   border-collapse: collapse;
 }
 
-td, th {
-  padding: .25rem .5rem;
+td,
+th {
+  padding: 0.25rem 0.5rem;
   border: 1px solid $table-border-color;
 }
 
@@ -224,7 +239,7 @@ blockquote {
   font-weight: 300;
   padding: 0 0 0 1.4rem;
   margin: 0 2rem 1rem 0;
-  border-left: .2em solid $blockquote-border-color;
+  border-left: 0.2em solid $blockquote-border-color;
 
   p {
     color: $blockquote-color;
@@ -277,11 +292,11 @@ img {
 
 // Specify the color of the selection
 ::-moz-selection {
-//  color: $selection-color;
+  //  color: $selection-color;
   background: $selection-background-color;
 }
 ::selection {
-//  color: $selection-color;
+  //  color: $selection-color;
   background: $selection-background-color;
 }
 
@@ -289,12 +304,12 @@ img {
 // http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
 .clearfix:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 // Alignment
@@ -308,7 +323,7 @@ img {
 }
 
 .right {
-  text-align: right
+  text-align: right;
 }
 
 /*********************/
@@ -321,14 +336,14 @@ img {
 
 .wrapper-sidebar {
   width: 30%;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-color: $background-color;
-	height: 100%;
-	top: 0;
-	left:0;
-	position: fixed;
-	z-index: 4;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-color: $background-color;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 4;
   border-right: 1px solid $divider-color;
 
   @include mobile {
@@ -350,7 +365,7 @@ img {
 }
 
 .site-info {
-  text-align:center;
+  text-align: center;
   margin: 100px auto 0;
 
   @include mobile {
@@ -360,7 +375,7 @@ img {
   }
 
   .site-avatar {
-    margin:0 auto;
+    margin: 0 auto;
     display: block;
     max-width: 200px;
     max-height: 200px;
@@ -397,8 +412,8 @@ img {
   }
 }
 
-.navlist{
-  text-align:center;
+.navlist {
+  text-align: center;
 }
 
 nav {
@@ -440,15 +455,14 @@ nav {
 
 // Posts
 
-.posts{
-
+.posts {
   .tag {
     display: inline;
     font-weight: 300;
     font-size: $small-font-size;
 
     li:before {
-      content: '';
+      content: "";
     }
 
     li {
@@ -457,14 +471,14 @@ nav {
 
       > a {
         margin: 3px 3px 3px 0;
-        padding: .5px 4px;
+        padding: 0.5px 4px;
         color: $base-color;
         background-color: $tag-index-label-background-color;
         border-radius: 3px;
 
         &:hover {
           color: $link-color;
-          background-color:$link-bghv-color;
+          background-color: $link-bghv-color;
         }
       }
     }
@@ -481,13 +495,11 @@ nav {
   border-bottom: none;
 }
 
-
 .pinned .feather-anchor {
   color: $base-lighten-color;
   padding: 2px;
   margin-right: 8px;
 }
-
 
 .date {
   font-weight: 300;
@@ -496,13 +508,10 @@ nav {
   margin-right: 4px;
 }
 
-
 .post {
-
   h1 {
-    margin-bottom: .1em;
+    margin-bottom: 0.1em;
   }
-
 
   .comments {
     margin-top: 10px;
@@ -514,10 +523,10 @@ nav {
 }
 
 .page {
-//  margin: 40px;
+  //  margin: 40px;
 
   @include mobile {
-//    margin: 24px;
+    //    margin: 24px;
   }
 }
 
@@ -530,9 +539,9 @@ nav {
   position: fixed;
   z-index: 4;
   padding: 60px 20px 0 20px;
-  
-  &:before{
-    content:"目录";
+
+  &:before {
+    content: "Index";
     margin: 0 0 1em 1em;
     font-weight: 700;
     font-size: 1.2em;
@@ -541,17 +550,17 @@ nav {
     border-bottom: 3px double $divider-color;
   }
 
-  li:before{
-    content:"";
+  li:before {
+    content: "";
   }
 
-  @include mobile{
-    display:none;
+  @include mobile {
+    display: none;
   }
 }
 
-@media screen and (max-width:2200px) and (min-width:1200px){
-  .withtoc{
+@media screen and (max-width: 2200px) and (min-width: 1200px) {
+  .withtoc {
     padding-left: 260px;
   }
 }
@@ -579,7 +588,8 @@ nav {
       padding: 10px 20px;
       background: $background-color;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $link-lighten-color;
         border: 1px solid $link-lighten-color;
         background-color: $link-bghv-color;
@@ -597,7 +607,8 @@ nav {
       padding: 10px 20px;
       background: $background-color;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: $link-lighten-color;
         border: 1px solid $link-lighten-color;
         background-color: $link-bghv-color;
@@ -644,12 +655,11 @@ nav {
 
       span {
         float: left;
-        padding: .5px 5px;
+        padding: 0.5px 5px;
 
         &.count {
           background-color: $tag-index-count-background-color;
           border-radius: 0 3px 3px 0;
-
         }
       }
     }
@@ -668,27 +678,24 @@ nav {
   }
 }
 
-
-
 // Footer
 .wrapper-footer-desktop {
   margin-top: 50px;
   border-top: 1px solid $footer-border-color;
   background-color: $footer-background-color;
   position: absolute;
-  clear:both;
-  width:100%;
-  bottom:0;
-  
+  clear: both;
+  width: 100%;
+  bottom: 0;
+
   @include mobile {
     display: none;
   }
-
 }
 
 .wrapper-footer-mobile {
   display: none;
-  
+
   @include mobile {
     display: block;
     width: 100%;
@@ -722,7 +729,7 @@ footer {
       height: 20px;
       width: 20px;
       fill: $base-lighten-color;
-      
+
       &:hover {
         fill: $link-lighten-color;
       }
@@ -731,7 +738,7 @@ footer {
     em {
       font-size: 18px;
       line-height: 1.5;
-      margin-top: -.75em;
+      margin-top: -0.75em;
       position: absolute;
       text-align: center;
       top: 50%;
@@ -746,5 +753,3 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "gitalk";
-
-
