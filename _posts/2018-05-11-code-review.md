@@ -1,3 +1,14 @@
+---
+layout: post
+title: Code Review
+date: 2018-05-11
+Author: peterli
+tags: [agile, quality]
+comments: false
+toc: true
+pinned: true
+---
+
 I will explain the benefit of code review based on my experience and the best practices.
 
 # Why code review
