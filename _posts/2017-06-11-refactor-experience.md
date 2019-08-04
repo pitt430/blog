@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Code Review
+title: Refactoring Practice
 date: 2017-06-22
 Author: peterli
 tags: [quality]
