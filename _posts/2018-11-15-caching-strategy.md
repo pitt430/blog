@@ -9,7 +9,7 @@ toc: true
 pinned: true
 ---
 
-## Caching strategy for high concurrent requests
+## Introduction
 
 The other day, one of my friend's new app had a serious problem. A bunch of people were to open the app ready for an important event which triggered the fuse.
 

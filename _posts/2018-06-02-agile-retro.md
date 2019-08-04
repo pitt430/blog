@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Retrospective
-date: 2019-06-02
+date: 2019-03-02
 Author: peterli
 tags: [agile, quality]
 comments: true
