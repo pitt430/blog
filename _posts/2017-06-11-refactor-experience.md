@@ -11,12 +11,12 @@ pinned: true
 
 Experience on refactoring
 
-# 10 years core modules refactoring
+## 10 years core modules refactoring
 
 Recently refactored a core function module of the company for nearly 10 years, and stepped into many holes. There were times when I felt like I couldn't do this refactoring, times when I was under a lot of pressure, thinking I was going to quit programming.
 But fortunately, I still stick to it, when I think back to writing this project, I have overturned it three times, that kind of mental journey really only experienced to know, really suffering. In retrospect, the pit I stepped into was more of an experience problem than a technical one.
 
-## Attitude
+### Attitude
 
 Looking back on this project, I think the attitude is the most important, the technical problem is the second. Why do you say that? For more than 10 years old functional modules, the most complex is actually the business logic, not the technical implementation. Therefore, for the refactoring of the old system, you first need to sort out the business logic accumulated in this module for more than ten years, which in itself gives the refactoring an invisible pressure. In addition, it is the core business module. Less business logic will lead to a decrease in online revenue. This series of background, make the psychological pressure of refactoring is really big.
 
@@ -28,7 +28,7 @@ When you give the schedule, there are likely to be a lot of things that didn't h
 
 So sometimes I feel that developing or refactoring a system is really attitude, so that I can have my own persistence and not make a wrong choice under the scheduling pressure from superiors. Especially for refactoring projects, if you don't have a calm mind, the system is definitely not good.
 
-## Skills
+### Skills
 
 I think the experience of refactoring is far more important than the technical strength, because one experience can save you a lot of unnecessary trouble. Before I tell you what I've learned, let me ask you a question:
 
@@ -40,7 +40,7 @@ In this case, my advice is not to. To be precise: for anything that doesn't inte
 
 So I suggest that we don't do it under unclear circumstances, not that we are lazy. It's about understanding what your purpose is and getting things done with limited resources (time).
 
-## Technology
+### Technology
 
 Technology comes last, because I really don't think technology is particularly important in refactoring. At least in the case of my refactoring, 60 percent of my work was mostly due to rework caused by my mindset or lack of skills. The techniques involved in refactoring my projects were done in less than 10% of the time. Looking back, I feel really sad.
 
@@ -140,7 +140,7 @@ Because when it came time to peel the watermelon, he found that he could only ad
 
 In fact, the above design pattern is the most basic design pattern: abstract design pattern. For complex business situations, there are many other design patterns, such as the proxy pattern, the decoration pattern, and so on. But patterns come down to your understanding of the business and your ability to abstract, and if you understand the business enough, you will write and write about a design pattern even if you don't know it.
 
-# Conclusion
+## Conclusion
 
 The experience of refactoring at this point was painful, but it wasn't. I suddenly exclaim that refactoring is still very technical, and the technical requirements are not so high. Refactoring is more of a test of understanding the business and further application of abstract thinking. Design patterns can be learned little by little if the business is well understood and abstracted. If it's the other way around, there's no way to do it.
 
