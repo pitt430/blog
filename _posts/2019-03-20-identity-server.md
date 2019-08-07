@@ -77,3 +77,38 @@ HMACSHA256(
   base64UrlEncode(payload),
   secret)
 ```
+
+## Authorization Flows
+
+Oauth2.0 has four authorizaiton flows:
+
+1. Implicit: simplified flow; Acquire token through browser redirection.
+2. Client Credentials:
+3. Resource Owner Password Credentials:
+4. Authorization Code
+
+### Client Credential
+
+The Client credential pattern is the simplest authorization pattern because the authorization process occurs only between Client and Identity Server.
+
+The scenario for this pattern is server-to-server communication. For example, for an e-commerce website, the order and logistics system are separated into two services for deployment. The order system needs to access the logistics system to track the logistics information, and the logistics system needs to access the tracking number information of the order system to refresh the logistics information regularly. Authorization of services between the two systems can be achieved through this pattern
+
+### Resource Owner Password Credentials
+
+The Resource Owner is actually a User. The password mode has one more participant than the client credential mode, which is User. Request to Identity Server for access token through User's username and password. This mode requires clients not to store passwords. However, we cannot be sure that the client has stored the password, so this pattern only applies to trusted clients. Otherwise, the risk of password leakage will occur. This pattern is not recommended.
+
+### Authorization Code
+
+Authorization code mode is a hybrid mode, is currently the most complete function, the most rigorous process of authorization mode. It is divided into two major steps: authentication and authorization.
+
+The process is as follows:
+
+1. The user accesses the client, which directs the user to Identity Server.
+
+2. The user fills in the login information to authorize the client, and the identity server redirects the URI specified by the client and returns a Authorization Code to the client.
+
+3. The client ask Identity Server for Access Token by Authorization Code.
+
+### Implicit
+
+This simplified mode is relative to the Authorization Code mode, it no longer require [Client] , all the authentication and authorization are through the browser.
