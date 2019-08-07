@@ -60,3 +60,20 @@ Now application development emerge in endlessly, based on the browser's web appl
 ### HTTP Authentication Flow
 
 > HTTP provides a standard authentication framework: the server can challenge a client's request, against which the client provides authentication credentials. The workflow for requests and response follows: the server returns an 401 (Unauthorized) status code to the client, and adds information about how to Authenticate in the www-authenticate header that includes at least one way to Authenticate. The client can then add Authorization header in the request for Authentication.
+
+Bearer authentication (also known as Token authentication) is an HTTP protocol using Bearer tokens that contain a security Token called an Bearer Token. So the core of Bearer authentication is Token. How to ensure Token security is a top priority. One way is to use Https, and the other is to encrypt the Token signature. JWT is a popular Token encoding method.
+
+### JWT
+
+JWT has three parts:
+
+1. Header: `alg` and `typ`, alg means algorithm, typ is type of token. This part use Base64Url
+2. Payload: is to save information, include any kind of claims, alos use BaseURL
+3. Signature: signed using server side key and ensure the Token is not tampered
+
+```
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret)
+```
