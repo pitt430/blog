@@ -70,6 +70,7 @@ This time I chose the Performance Profiler that comes with time VS, an extremely
 5. Select the Performance Session and right-click the Attach corresponding process to track Performance
 
 6. During the tracking process, the tracking can be suspended and stopped at any time
+   ![perfprofiler][perfprofiler]: https://raw.githubusercontent.com/pitt430/blog/master/images/perfoptimization/codeanalysis.png "Logo Title Text 2"
 
 ### Algorithm tunning
 
