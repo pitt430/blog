@@ -178,3 +178,128 @@ public class Startup
         app.UseMvcWithDefaultRoute();
     }
 ```
+
+### Resource Protection Configuration
+
+After configuring the Identity Server, we need to protect the resources, and how to direct all the authentication and authorization to identity server.
+The flow of Client access Resource:
+
+1. Client ask for resource, If Resource need authentication and authorization , direct the request to identity server.
+2. Identity Server return the Token according to Client's authorization type.
+3. Client can verify the correcteness of Token.
+
+Code
+
+```csharp
+[Route("[controller]")]
+[Authorize]
+public class IdentityController : ControllerBase
+{
+    [HttpGet]
+    public IActionResult Get()
+    {
+        return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+    }
+}
+```
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvcCore()
+            .AddAuthorization()
+            .AddJsonFormatters();
+        //Set authentication type
+        services.AddAuthentication("Bearer")
+              //add token authentication to DI
+            .AddIdentityServerAuthentication(options =>
+            {
+                //define authoriztion URL
+                options.Authority = "http://localhost:5000";
+                options.RequireHttpsMetadata = false;
+                options.ApiName = "api1";
+            });
+    }
+    public void Configure(IApplicationBuilder app)
+    {
+        //Add middleware to pipeline
+        app.UseAuthentication();
+        app.UseMvc();
+    }
+}
+```
+
+### Configure Client Request
+
+- Use DiscoverClient to discover the Token Endpoint
+- Use TokenClient To apply access token
+- Use HttpClient to access API
+
+```csharp
+// discover endpoints from metadata
+var disco = await DiscoveryClient.GetAsync("http://localhost:5000");
+// request token（ClientCredentials type）
+var tokenClient = new TokenClient(disco.TokenEndpoint, "client", "secret");
+var tokenResponse = await tokenClient.RequestClientCredentialsAsync("api1")
+if (tokenResponse.IsError)
+{
+    Console.WriteLine(tokenResponse.Error);
+    return;
+}
+Console.WriteLine(tokenResponse.Json);
+Console.WriteLine("\n\n");
+// call api
+var client = new HttpClient();
+client.SetBearerToken(tokenResponse.AccessToken);
+```
+
+For the ASP.NET Web console client, let's first answer a question:
+
+Does the Web application need to log in?
+
+1. If you need to log in, you need to authenticate.
+2. After successful authentication, session state maintenance is required.
+
+After answering the above questions, we have sorted out the configuration points:
+
+1. Add the authentication middleware
+2. Cookies are enabled for session retention
+3. Add OIDC, using the authentication service provided by our own IdentityServer
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+    JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+    services.AddAuthentication(options =>
+        {
+            options.DefaultScheme = "Cookies";
+            options.DefaultChallengeScheme = "oidc";
+        })
+        .AddCookie("Cookies")
+        .AddOpenIdConnect("oidc", options =>
+        {
+            options.SignInScheme = "Cookies";
+            options.Authority = "http://localhost:5000";
+            options.RequireHttpsMetadata = false;
+            options.ClientId = "mvc";
+            options.SaveTokens = true;
+        });
+}
+public void Configure(IApplicationBuilder app, IHostingEnvironment env
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Home/Error");
+    }
+    app.UseAuthentication();
+    app.UseStaticFiles();
+    app.UseMvcWithDefaultRoute();
+}
+```
