@@ -112,3 +112,69 @@ The process is as follows:
 ### Implicit
 
 This simplified mode is relative to the Authorization Code mode, it no longer require [Client] , all the authentication and authorization are through the browser.
+
+## IdentityServer 4 Integration
+
+Through sorting out the above points, we have a general understanding of some related concepts of OpenId Connect and OAuth 2.0.
+IdentityServer4 is an authentication middleware customized for ASP.NET CORE, which implements OpenId Connect and OAuth 2.0 protocols.
+THen we can discuss how to integrate IdentityServer4 into your system.
+
+1. How to configure and start IdentityServer middleware.
+2. How do resources configure and enable the authentication and authorization middleware.
+3. How does Client authenticate and authorize.
+
+### Configure and Start
+
+- Configure the protected resource list
+- Configure allowed authenticated Client
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddMvc();
+        // configure identity server with in-memory stores, keys, clients and scopes
+        services.AddIdentityServer()
+            .AddDeveloperSigningCredential()
+             //Identity Resource
+            .AddInMemoryIdentityResources(Config.GetIdentityResources())
+              //API resource
+            .AddInMemoryApiResources(Config.GetApiResources())
+             //Configure allowed clients
+            .AddInMemoryClients(Config.GetClients())
+            .AddTestUsers(Config.GetUsers());
+        services.AddAuthentication()
+              //Add Google authentication(Optional)
+            .AddGoogle("Google", options =>
+            {
+                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                options.ClientId = "434483408261-55tc8n0cs4ff1fe21ea8df2o443v2iuc.apps.googleusercontent.com";
+                options.ClientSecret = "3gcoTrEDPPJ0ukn_aYYT6PWo";
+            })
+            //Add other identity server provider.
+            .AddOpenIdConnect("oidc", "OpenID Connect", options =>
+            {
+                options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                options.SignOutScheme = IdentityServerConstants.SignoutScheme;
+                options.Authority = "https://demo.identityserver.io/";
+                options.ClientId = "implicit";
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                };
+            });
+    }
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        //Add identity server middleware to pipeline
+        app.UseIdentityServer();
+        app.UseStaticFiles();
+        app.UseMvcWithDefaultRoute();
+    }
+```
