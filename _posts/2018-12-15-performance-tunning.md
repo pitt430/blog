@@ -73,7 +73,7 @@ This time I chose the Performance Profiler that comes with time VS, an extremely
 
 ![perfprofiler]
 
-[perfprofiler]: https://raw.githubusercontent.com/pitt430/blog/master/images/perfoptimization/codeanalysis.png "Logo Title Text 2"
+[perfprofiler]: https://raw.githubusercontent.com/pitt430/blog/master/images/perfoptimization/codeanalysis.PNG "Logo Title Text 2"
 
 ### Algorithm tunning
 
